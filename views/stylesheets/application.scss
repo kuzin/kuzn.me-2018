@@ -12,8 +12,8 @@ body {
 	@include text-shadow(0 1px 0 #ffffff); }
 
 article {
-	padding: 50px 0 0 0;
-	width: 1000px;
+	padding: 50px 20px 0 20px;
+	width: 960px;
 	margin: 0 auto;
 	a#moustache {
 		background: inline-image('moustache.png');
@@ -34,5 +34,11 @@ article {
 				color: #666666;
 			}
 		}
+	}
+}
+
+@media only screen and (max-width : 480px) {
+	article {
+		width: 80%;
 	}
 }
