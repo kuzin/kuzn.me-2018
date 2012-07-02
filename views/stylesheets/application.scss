@@ -1,0 +1,38 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import 'compass/reset';
+@import 'compass/utilities';
+@import 'compass/css3';
+
+body {
+	background: #eef1f6;
+	font-family: 'Droid Sans Mono';
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	@include text-shadow(0 1px 0 #ffffff); }
+
+article {
+	padding: 50px 0 0 0;
+	width: 1000px;
+	margin: 0 auto;
+	a#moustache {
+		background: inline-image('moustache.png');
+		width: 66px;
+		height: 20px;
+		display: block;
+		text-decoration: none;
+	}	
+	section {
+		padding-top: 30px;
+		p {
+			margin-bottom: 15px;
+			strong {
+				font-weight: 600;
+			}
+			&.desc {
+				font-size: 13px;
+				color: #666666;
+			}
+		}
+	}
+}
