@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'rdiscount'
 require 'haml'
+require 'xml-sitemap'
 
 # Helpers
 require './lib/render_partial'
@@ -18,16 +19,16 @@ set :markdown, :layout_engine => :haml, :layout => :post
 
 # Application routes
 get '/' do
-  markdown :index, :layout => :'layouts/application'
+    markdown :index, :layout => :'layouts/application'
 end
 
 get '/about' do
-  haml :about, :layout => :'layouts/page'
+    haml :about, :layout => :'layouts/page'
 end
 
 
 # Sitemap
-get '/sitemap.xml' do
+get '/sitemap' do
     map = XmlSitemap::Map.new('kuzn.me') do |m|
         m.add(:url => '/', :period => :weekly)
         m.add(:url => '/about', :period => :weekly)
