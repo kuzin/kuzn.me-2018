@@ -24,3 +24,16 @@ end
 get '/about' do
   haml :about, :layout => :'layouts/page'
 end
+
+
+# Sitemap
+get '/sitemap.xml' do
+    map = XmlSitemap::Map.new('kuzn.me') do |m|
+        m.add(:url => '/', :period => :weekly)
+        m.add(:url => '/about', :period => :weekly)
+    end 
+    headers['Content-Type'] = 'text/xml'
+    map.render
+end
+
+
