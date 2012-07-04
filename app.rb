@@ -28,7 +28,7 @@ end
 
 
 # Sitemap
-get '/sitemap' do
+get '/sitemap.xml' do
     map = XmlSitemap::Map.new('kuzn.me') do |m|
         m.add(:url => '/', :period => :weekly)
         m.add(:url => '/about', :period => :weekly)
