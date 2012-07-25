@@ -1,4 +1,5 @@
 require './app'
+require 'susy'
 
 # Compass Configuration
 

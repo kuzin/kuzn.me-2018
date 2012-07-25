@@ -1,29 +1,32 @@
 require 'rubygems'
 require 'sinatra'
 require 'rdiscount'
-require 'haml'
 require 'xml-sitemap'
+require 'slim'
 
-# Helpers
-require './lib/render_partial'
+# Partial Helper
+module Sinatra
+  module RenderPartial
+    def partial(page)
+      slim page
+    end
+  end
+  helpers RenderPartial
+end
 
 # Set Sinatra variables
 set :app_file, __FILE__
 set :root, File.dirname(__FILE__)
 set :views, 'views'
 set :public_folder, 'public'
-set :haml, {:format => :html5} # default Haml format is :xhtml
-set :markdown, :layout_engine => :haml, :layout => :post
+set :markdown, :layout_engine => :slim
 
-
+# Set Slim Options
+Slim::Engine.set_default_options :pretty => true
 
 # Application routes
 get '/' do
-    markdown :index, :layout => :'layouts/application'
-end
-
-get '/about' do
-    haml :about, :layout => :'layouts/page'
+    slim :index, :layout => :'layouts/application'
 end
 
 

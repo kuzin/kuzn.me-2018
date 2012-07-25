@@ -1,44 +1,43 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
 @import 'compass/reset';
 @import 'compass/utilities';
 @import 'compass/css3';
+@import 'susy';
+
+$total-columns : 12;
+$column-width : 4em;
+$gutter-width : 1.5em;
+$gutter-padding: $gutter-width;
 
 body {
 	background: #eef1f6;
-	font-family: 'Droid Sans Mono';
+	font-family: 'Ubuntu Mono';
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
-	@include text-shadow(0 1px 0 #ffffff); }
+	font-size: 16px;
+	line-height: 22px;
+	@include text-shadow(0 1px 0 #ffffff);
+	a {
+		@include link-colors(#4690E2, darken(#4690E2, 10), #4690E2);
+		text-decoration: none; } }
 
 article {
-	padding: 50px 20px 20px 20px;
-	width: 960px;
+	padding: 50px 0 0 0;
+	@include container;
 	margin: 0 auto;
 	a#moustache {
 		background: inline-image('moustache.png');
 		width: 66px;
 		height: 20px;
 		display: block;
-		text-decoration: none;
-	}	
+		text-decoration: none; }	
 	section {
-		padding-top: 30px;
+		strong { font-weight: 700; }
+		h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
+		h2 { font-size: 1em; margin: 0 0 1em 0; }
+		h3 { 
+			margin: 2em 0 0 0;
+			text-transform: uppercase; 
+			font-weight: 700; }
 		p {
-			margin-bottom: 15px;
-			strong {
-				font-weight: 600;
-			}
-			&.desc {
-				font-size: 13px;
-				color: #666666;
-			}
-		}
-	}
-}
-
-@media only screen and (max-width : 480px) {
-	article {
-		width: 80%;
-	}
-}
+			color: #444444;
+			margin: 10px 0; } } } 
