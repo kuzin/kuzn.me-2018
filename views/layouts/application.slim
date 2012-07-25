@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Kuzin.Resume
+        meta http-equiv="Content-Type" content="text/html;chartset=utf-8"
+        meta name="lang" content="en"
+        link rel="stylesheet" media="screen" href="/stylesheets/application.css"
+        media content="width=device-width, initial-scale=1.0" name="viewport"
+    body
+        header
+            nav
+                == partial :_nav_main
+        article
+            a id="moustache" href="/"
+            section
+                == yield
+        javascript:
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-33139712-1']);
+            _gaq.push(['_setDomainName', 'kuzn.me']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
