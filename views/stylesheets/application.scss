@@ -10,7 +10,7 @@ $gutter-width : 1.5em;
 $gutter-padding: $gutter-width;
 
 body {
-	background: #eef1f6;
+	background: image-url('bg.png');
 	font-family: 'Ubuntu Mono';
 	font-weight: 400;
 	font-size: 16px;
@@ -21,22 +21,25 @@ body {
 		text-decoration: none; } }
 
 article {
-	padding: 50px 0 0 0;
+	position: fixed;
+	top: 50%;
+	margin-top: -88px !important;
+	left: 50px;
 	@include container;
-	margin: 0 auto;
+	// margin: 0 auto;
 	a#moustache {
 		background: inline-image('moustache.png');
 		width: 66px;
 		height: 20px;
 		display: block;
-		text-decoration: none; }	
+		text-decoration: none; }
 	section {
 		strong { font-weight: 700; }
 		h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
 		h2 { font-size: 1em; margin: 0 0 1em 0; }
-		h3 { 
+		h3 {
 			margin: 2em 0 0 0;
-			text-transform: uppercase; 
+			text-transform: uppercase;
 			font-weight: 700; }
 		ul {
 			list-style: circle;
@@ -47,4 +50,4 @@ article {
 		}
 		p {
 			color: #444444;
-			margin: 10px 0; } } } 
+			margin: 10px 0; } } }
