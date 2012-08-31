@@ -14,6 +14,40 @@ html
             a id="moustache" href="/"
             section
                 == yield
+        script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+        javascript:
+            var hideStuff = {
+                readMore : '<a href="#" class="more">[Read More]</a>',
+                readLess : '<a href="#" class="less">[Read Less]</a>',
+                trim : function (obj) {
+                    var originalText = $(obj).text();
+                    var length = originalText.length;
+                    // Save in data
+                    $(obj).data('text', originalText);
+                    if (length > 200) {
+                        var newText = originalText.trim()
+                            .substring(0,200)
+                            .split(' ')
+                            .slice(0, -1)
+                            .join(' ') + '... ';
+                        // check output    
+                        $(obj)
+                            .text(newText)
+                            .append(hideStuff.readMore);
+                    }
+                },
+                show : function (obj) { 
+                    $(obj).text($(obj).data().text).append(hideStuff.readLess); 
+                },
+                init : function (obj) { 
+                    $(obj).each(function (){ hideStuff.trim($(this)); });
+                }
+            };
+            $(function(){
+                hideStuff.init($('.recomendation'));
+                $('.less').live('click', function () { hideStuff.trim($(this).parent()); return false;; })
+                $('.more').live('click', function () { hideStuff.show($(this).parent()); return false; })
+            });
         javascript:
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-33139712-1']);

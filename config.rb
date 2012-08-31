@@ -28,6 +28,6 @@ relative_assets       = false
 line_comments         = false
 
 # CSS output style - :nested, :expanded, :compact, or :compressed
-output_style          = :expanded
+output_style          = :compressed
 
 # Learn more: http://beta.compass-style.org/help/tutorials/configuration-reference/
