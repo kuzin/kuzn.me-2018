@@ -29,13 +29,17 @@ get '/' do
     slim :index, :layout => :'layouts/application'
 end
 
+get '/cv' do
+  slim :resume, :layout => :'layouts/application'
+end
+
 
 # Sitemap
 get '/sitemap.xml' do
     map = XmlSitemap::Map.new('kuzn.me') do |m|
         m.add(:url => '/', :period => :weekly)
         m.add(:url => '/about', :period => :weekly)
-    end 
+    end
     headers['Content-Type'] = 'text/xml'
     map.render
 end

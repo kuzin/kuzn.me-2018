@@ -1,42 +1,93 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic);
+@import url('http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic');
 @import 'compass/reset';
 @import 'compass/utilities';
 @import 'compass/css3';
-@import 'susy';
 
-$total-columns : 12;
-$column-width : 4em;
-$gutter-width : 1.5em;
-$gutter-padding: $gutter-width;
+@mixin respond-to($media) {
+	@if $media == tablet {
+		@media only screen and (max-width: 770px) { @content }
+	} @else if $media == desktop {
+		@media only screen and (max-width: 850px) { @content }
+	} @else if $media == phone {
+		@media only screen and (max-width: 480px) { @content }
+	}
+}
 
 body {
 	background: image-url('bg.png');
 	font-family: 'Ubuntu Mono';
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 22px;
 	@include text-shadow(0 1px 0 #ffffff);
 	a {
 		@include link-colors(#4690E2, darken(#4690E2, 10), #4690E2);
 		text-decoration: none; } }
 
+footer {
+	padding: 15px;
+}
+
 article {
-	position: fixed;
-	top: 50%;
-	margin-top: -88px !important;
-	left: 50px;
-	@include container;
-	// margin: 0 auto;
-	a#moustache {
-		background: inline-image('moustache.png');
-		width: 66px;
-		height: 20px;
-		display: block;
-		text-decoration: none; }
 	section {
+		&#body {
+			a#moustache {
+				background: inline-image('moustache.png');
+				width: 66px;
+				height: 20px;
+				display: block;
+				text-decoration: none;
+				margin: 0 auto;
+			}
+			text-align: center;
+			padding: 35px 15px 15px 15px;
+			border-bottom: 1px solid #ccc;
+		}
+		&#portfolio {
+			padding: 15px;
+			background: inline-image('bg-bottom.png');
+			position: relative;
+			height: 236px;
+			overflow: hidden;
+			@include respond-to(phone) {
+				overflow: visible;
+				height: auto;
+			}
+			ul {
+				list-style: none;
+				margin: 0;
+				position: relative;
+				@include clearfix;
+				width: 900%;
+				@include respond-to(phone) { width: 100%;}
+				overflow: auto;
+				li {
+					overflow: visible;
+					border: none;
+					float: left;
+					width: 300px;
+					padding: 5px;
+					margin: 0;
+					@include respond-to(phone) { width: 100%; }
+					@include box-sizing(border-box);
+					img {
+						@include border-radius(3px);
+						width: 100%;
+						padding: 10px;
+						margin: 0;
+						background-color: rgba(0,0,0,0.8);
+						@include box-sizing(border-box);
+					}
+				}
+			}
+			img {
+				margin: 0;
+				@include respond-to(phone) { width: auto; max-width: 100%; }
+			}
+		}
 		strong { font-weight: 700; }
 		h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
-		h2 { font-size: 1em; margin: 0 0 1em 0; }
+		h2 { font-size: 1em; margin: 0 0 1em 0; @include respond-to(phone) { span { display: none; } } }
 		h3 {
 			margin: 2em 0 0 0;
 			text-transform: uppercase;

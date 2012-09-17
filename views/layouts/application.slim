@@ -11,43 +11,33 @@ html
             nav
                 == partial :_nav_main
         article
-            a id="moustache" href="/"
-            section
+            section#body
+                a id="moustache" href="/"
                 == yield
-        script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+            section#portfolio
+                ul
+
+        footer
+            p This is the footer!
+        script src="/javascripts/lib/modernizr-1.6.min.js"
+        script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
+        script src="/javascripts/lib/jquery.jribbble.js"
+
         javascript:
-            var hideStuff = {
-                readMore : '<a href="#" class="more">[Read More]</a>',
-                readLess : '<a href="#" class="less">[Read Less]</a>',
-                trim : function (obj) {
-                    var originalText = $(obj).text();
-                    var length = originalText.length;
-                    // Save in data
-                    $(obj).data('text', originalText);
-                    if (length > 200) {
-                        var newText = originalText.trim()
-                            .substring(0,200)
-                            .split(' ')
-                            .slice(0, -1)
-                            .join(' ') + '... ';
-                        // check output    
-                        $(obj)
-                            .text(newText)
-                            .append(hideStuff.readMore);
-                    }
-                },
-                show : function (obj) { 
-                    $(obj).text($(obj).data().text).append(hideStuff.readLess); 
-                },
-                init : function (obj) { 
-                    $(obj).each(function (){ hideStuff.trim($(this)); });
-                }
-            };
-            $(function(){
-                hideStuff.init($('.recomendation'));
-                $('.less').live('click', function () { hideStuff.trim($(this).parent()); return false;; })
-                $('.more').live('click', function () { hideStuff.show($(this).parent()); return false; })
+
+            $.jribbble.getShotsByPlayerId('kuzin', function (shots) {
+
+                var html = [];
+
+                 $.each(shots.shots, function (i, shot) {
+                    console.log(shot);
+                    html.push('<li><img src="' + shot.image_url + '" alt="' + shot.title + '"></li>');
+                });
+
+                $('#portfolio ul').html(html.join(''));
+
             });
+
         javascript:
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-33139712-1']);
