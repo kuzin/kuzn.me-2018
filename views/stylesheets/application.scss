@@ -11,7 +11,7 @@
 	} @else if $media == phone {
 		@media only screen and (max-width: 480px) { @content }
 	} @else if $media == huge {
-		@media only screen and (min-width: 1000px) { @content }
+		@media only screen and (max-width: 960px) { @content }
 	}
 }
 
@@ -145,7 +145,7 @@ article {
 			width: 960px;
 			@include box-sizing(border-box);
 			background: white;
-			@include respond-to(tablet) { width: 100%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+			@include respond-to(huge) { width: 100%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
 			position: relative;
 			.resume-btn {
 				@include respond-to(phone) { display: none;}
@@ -160,6 +160,11 @@ article {
 			}
 		}
 		&#portfolio {
+			padding: 30px;
+			margin: 0px auto;
+			width: 960px;
+			@include box-sizing(border-box);
+			@include respond-to(huge) { width: 100%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
 			padding: 15px;
 			background: inline-image('bg-bottom.png');
 			position: relative;
@@ -181,7 +186,6 @@ article {
 					margin: 0;
 					width: 33.333333333333333%;
 					position: relative;
-					@include respond-to(huge) { width: 25%;}
 					@include respond-to(tablet) { width: 50%;}
 					@include respond-to(phone) { width: 100%; }
 					@include box-sizing(border-box);
