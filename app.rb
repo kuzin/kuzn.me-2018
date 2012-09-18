@@ -30,6 +30,16 @@ get '/' do
     slim :index, :layout => :'layouts/application'
 end
 
+get '/portfolio' do
+    @title = 'Portfolio'
+    slim :index, :layout => :'layouts/application'
+end
+
+get '/work' do
+    @title = 'Portfolio'
+    slim :index, :layout => :'layouts/application'
+end
+
 get '/cv' do
   @title = 'CV'
   slim :resume, :layout => :'layouts/application'
@@ -38,6 +48,10 @@ end
 get '/about' do
   @title = 'About'
   slim :about, :layout => :'layouts/application'
+end
+
+not_found do
+  slim :error, :layout => :'layouts/application'
 end
 
 

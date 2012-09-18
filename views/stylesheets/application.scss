@@ -93,15 +93,24 @@ nav {
 // Footer
 
 footer {
-	background: image-url('moustache-light.png') no-repeat right center;
-	@include respond-to(phone) { background: transparent;}
-	margin-right: 20px;
-	padding: 15px;
-	@include respond-to(phone) { text-align: center;}
-	p {
-		margin: 2px 0;
-
+	.wrap {
+		@include respond-to(phone) { text-align: center;}
+		width: 960px;
+		margin: 0 auto;
+		padding: 15px 0;
+		@include box-sizing(border-box);
+		background: image-url('moustache-light.png') no-repeat right center;
+		@include respond-to(phone) { background: transparent;}
+		@include respond-to(tablet) {
+			width: auto;
+			padding: 15px;
+			margin: 0 20px 0 0;
+		}
+		p {
+			margin: 2px 0;
+		}
 	}
+
 }
 
 // Header
@@ -129,6 +138,7 @@ header {
 
 article {
 	section {
+		&#fourohfour,
 		&#cv {
 			padding: 30px;
 			margin: 0px auto;
@@ -228,6 +238,9 @@ article {
 	}
 }
 
+
+// Icons
+
 @mixin inlineIcon ($name, $w:'12px', $h:'12px') {
 	.#{$name} {
 		background: image-url('#{$name}.png') no-repeat center center;
@@ -241,6 +254,7 @@ article {
 @include inlineIcon('flask', 13px, 12px);
 @include inlineIcon('bubble_clear', 13px, 12px);
 @include inlineIcon('download_arrow', 15px, 12px);
+@include inlineIcon('bookmark_alt', 15px, 12px);
 @include inlineIcon('printer', 13px, 12px);
 @include inlineIcon('heart_dark', 13px, 12px);
 @include inlineIcon('document_new', 13px, 12px);
