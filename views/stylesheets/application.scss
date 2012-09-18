@@ -147,6 +147,16 @@ article {
 			background: white;
 			@include respond-to(huge) { width: 100%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
 			position: relative;
+			p.recomendation {
+				background: #F9F9F9;
+				border: 1px solid darken(#F9F9F9, 5);
+				padding: 10px;
+				span.recomendation-who {
+					display: block;
+					color: #555;
+					margin-top: 5px;
+				}
+			}
 			.resume-btn {
 				@include respond-to(phone) { display: none;}
 				float:right;
@@ -262,6 +272,7 @@ article {
 @include inlineIcon('printer', 13px, 12px);
 @include inlineIcon('heart_dark', 13px, 12px);
 @include inlineIcon('document_new', 13px, 12px);
+@include inlineIcon('user_clear', 13px, 12px);
 
 
 
