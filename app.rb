@@ -33,6 +33,10 @@ get '/cv' do
   slim :resume, :layout => :'layouts/application'
 end
 
+get '/about' do
+  slim :about, :layout => :'layouts/application'
+end
+
 
 # Sitemap
 get '/sitemap.xml' do

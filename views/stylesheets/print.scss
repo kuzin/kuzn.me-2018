@@ -1,0 +1,51 @@
+@import url('http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic');
+@import 'compass/reset';
+@import 'compass/utilities';
+@import 'compass/css3';
+
+
+// Hide unimportant things
+
+.resume-btn,
+footer,
+header,
+nav {
+    display: none;
+}
+
+// Basic Print Formats
+
+body {
+    font-family: 'Ubuntu Mono';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    a {
+        @include link-colors(#4690E2, darken(#4690E2, 10), #4690E2);
+        text-decoration: none; } }
+
+strong { font-weight: 700; }
+h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
+h2 { font-size: 1em; margin: 0 0 1em 0; }
+h3 {
+    margin: 2em 0 0 0;
+    text-transform: uppercase;
+    font-weight: 700; }
+ul {
+    list-style: circle;
+    margin: 1em 0 0 1em;
+    li {
+        margin-bottom: .5em;
+    }
+}
+p {
+    color: #444444;
+    margin: 10px 0; }
+
+// Cool global things
+
+a:link:after, #content a:visited:after {
+    content: " (" attr(href) ") ";
+    font-size: 90%; }
+a[href^="/"]:after {
+    content: " (http://www.kuzn.me" attr(href) ") "; }

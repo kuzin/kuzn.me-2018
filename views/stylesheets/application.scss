@@ -10,8 +10,12 @@
 		@media only screen and (max-width: 850px) { @content }
 	} @else if $media == phone {
 		@media only screen and (max-width: 480px) { @content }
+	} @else if $media == huge {
+		@media only screen and (min-width: 1000px) { @content }
 	}
 }
+
+// Layout Defaults
 
 body {
 	background: image-url('bg.png');
@@ -23,6 +27,9 @@ body {
 	a {
 		@include link-colors(#4690E2, darken(#4690E2, 10), #4690E2);
 		text-decoration: none; } }
+
+
+// Font Defaults & Sensible Styles
 
 strong { font-weight: 700; }
 h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
@@ -42,9 +49,39 @@ p {
 	color: #444444;
 	margin: 10px 0; }
 
+
+// Nav
+
+nav {
+	background: white;
+	border-bottom: 1px solid #ccc;
+	padding: 15px;
+	ul {
+		list-style: none;
+		text-align: center;
+		margin: 0;
+		li {
+			display: inline;
+			&.blog 		{ a { background: image-url('cloud.png') no-repeat left center;} }
+			&.portfolio { a { background: image-url('magic_wand.png') no-repeat left center;} }
+			&.cv 		{ a { background: image-url('page.png') no-repeat left center;} }
+			&.about 	{ a { background: image-url('hero_cosmic.png') no-repeat left center;} }
+			a {
+				padding: 0 15px 0 20px;
+				color: #333;
+			}
+		}
+	}
+}
+
+
+// Footer
+
 footer {
 	padding: 15px;
 }
+
+// Header
 
 header {
 	a#moustache {
@@ -57,7 +94,7 @@ header {
 	}
 	text-align: center;
 	padding: 35px 15px 15px 15px;
-	border-bottom: 1px solid #ccc;
+	//border-bottom: 1px solid #ccc;
 	@include respond-to(phone) {
 		h1 {
 			font-size: 1.2em;
@@ -65,14 +102,34 @@ header {
 	}
 }
 
+// Article (Body)
+
 article {
 	section {
+		&#cv {
+			padding: 30px;
+			margin: 0px auto;
+			width: 960px;
+			@include box-sizing(border-box);
+			background: white;
+			@include respond-to(tablet) { width: 100%; }
+			position: relative;
+			.resume-btn {
+				@include respond-to(phone) { display: none;}
+				float:right;
+				color: #333;
+				cursor: pointer !important;
+				margin-left: 15px;
+				padding: 5px 15px;
+				border: 1px solid #ccc;
+				@include border-radius(3px);
+				@include background(linear-gradient(#fefefe, #efefef));
+			}
+		}
 		&#portfolio {
 			padding: 15px;
 			background: inline-image('bg-bottom.png');
 			position: relative;
-			height: 236px;
-			overflow: hidden;
 			@include respond-to(phone) {
 				overflow: visible;
 				height: auto;
@@ -82,17 +139,17 @@ article {
 				margin: 0;
 				position: relative;
 				@include clearfix;
-				width: 900%;
 				@include respond-to(phone) { width: 100%;}
-				overflow: auto;
 				li {
-					overflow: visible;
 					border: none;
-					float: left;
-					width: 300px;
+					display: block;
+				    float: left;
 					padding: 5px;
 					margin: 0;
+					width: 33.333333333333333%;
 					position: relative;
+					@include respond-to(huge) { width: 25%;}
+					@include respond-to(tablet) { width: 50%;}
 					@include respond-to(phone) { width: 100%; }
 					@include box-sizing(border-box);
 					&:hover {
@@ -107,11 +164,11 @@ article {
 						right: 15px;
 						bottom: 15px;
 						background: rgba(0, 0, 0, 0.8);
-						padding: 150px 15px 0 15px;
+						padding: 15px;
 						@include respond-to(phone) {
 							opacity: 1;
-							top: 190px;
-							padding: 15px 15px 0 15px; }
+							top: auto;
+							padding: 15px; }
 						@include text-shadow(none);
 						strong {
 							font-size: 12px;
@@ -131,8 +188,8 @@ article {
 						}
 					}
 					img {
-						@include border-radius(3px);
 						width: 100%;
+						@include border-radius(3px);
 						padding: 10px;
 						margin: 0;
 						background-color: rgba(0,0,0,0.8);
@@ -148,18 +205,24 @@ article {
 	}
 }
 
-
-#load-more {
-	padding: 10px;
-	border-bottom: 1px solid #ccc;
-	background: #Fff;
-	button {
-		@include border-radius(5px);
-		width: 100%;
-		padding: 10px;
-		border: 1px solid #CCC;
-		@include background(linear-gradient(#efefef, darken(#efefef, 10)));
-		@include box-sizing(border-box);
-		display: block;
+@mixin inlineIcon ($name, $w:'12px', $h:'12px') {
+	.#{$name} {
+		background: image-url('#{$name}.png') no-repeat center center;
+		width: #{$w}; height: #{$h}; display: inline-block;
 	}
 }
+
+@include inlineIcon('home_dark', 13px, 12px);
+@include inlineIcon('info', 13px, 12px);
+@include inlineIcon('desktop_pc', 13px, 12px);
+@include inlineIcon('flask', 13px, 12px);
+@include inlineIcon('bubble_clear', 13px, 12px);
+@include inlineIcon('download_arrow', 15px, 12px);
+@include inlineIcon('printer', 13px, 12px);
+
+
+
+
+
+
+

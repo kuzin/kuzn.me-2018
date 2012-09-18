@@ -5,11 +5,24 @@ html
         meta http-equiv="Content-Type" content="text/html;chartset=utf-8"
         meta name="lang" content="en"
         link rel="stylesheet" media="screen" href="/stylesheets/application.css"
+        link rel="stylesheet" media="print"  href="/stylesheets/print.css"
         meta content="width=device-width, initial-scale=1.0" name="viewport"
     body
+
+        nav
+            ul
+                li class="portfolio"
+                    a href="/" PORTFOLIO
+                li class="cv"
+                    a href="/cv" CV
+                li class="about"
+                    a href="/about" ABOUT
+                li class="blog"
+                    a href="/blog" BLOG
+
         header
             a id="moustache" href="/"
-            h1 the diabolical website of <strong>mike kuzin</strong>
+            h1 the diabolical haus of <strong>mike kuzin</strong>
             h2 Interactive Designer & Front End Developer <span>@ <a href="http://www.showclix.com">ShowClix</a></span>
 
         article
@@ -17,32 +30,14 @@ html
 
         footer
             p This is the footer!
+
+
         script src="/javascripts/lib/modernizr-1.6.min.js"
-        script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
+        script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
+        script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"
         script src="/javascripts/lib/jquery.jribbble.js"
-
-        javascript:
-
-            $.jribbble.getShotsByPlayerId('kuzin', function (shots) {
-
-                var html = [];
-
-                 $.each(shots.shots, function (i, shot) {
-                    html.push('<li id="' + shot.id + '">');
-                    html.push('<a href="' + shot.short_url + '">');
-                    html.push('<img src="' + shot.image_url + '" alt="' + shot.title + '"/>');
-                    html.push('<div class="dribble-desc">');
-                    html.push('<strong>' + shot.title + '</strong>');
-                    html.push('<ul class="dribble-stats">');
-                    html.push('<li class="likes">' + shot.likes_count + '</li>');
-                    html.push('<li class="comments">' + shot.comments_count + '</li>');
-                    html.push('<li class="views">' + shot.views_count + '</li>');
-                    html.push('</div></ul></a></li>');
-                });
-
-                $('#portfolio ul').html(html.join(''));
-
-            });
+        script src="/javascripts/lib/jquery.flexslider.js"
+        script src="/javascripts/application.js"
 
         javascript:
             var _gaq = _gaq || [];
