@@ -56,12 +56,27 @@ nav {
 	background: white;
 	border-bottom: 1px solid #ccc;
 	padding: 15px;
+	@include respond-to(phone) { padding: 0; border-bottom: none;}
 	ul {
 		list-style: none;
 		text-align: center;
 		margin: 0;
+		@include clearfix;
 		li {
 			display: inline;
+			@include respond-to(phone) {
+				padding: 0;
+				a {
+					width: 50%;
+					display: block;
+					float: left;
+					padding: 15px !important;
+					@include box-sizing(border-box);
+					border-right: 1px solid #ccc;
+					border-bottom: 1px solid #ccc;
+					background: transparent !important;
+				}
+			}
 			&.blog 		{ a { background: image-url('cloud.png') no-repeat left center;} }
 			&.portfolio { a { background: image-url('magic_wand.png') no-repeat left center;} }
 			&.cv 		{ a { background: image-url('page.png') no-repeat left center;} }
@@ -78,7 +93,15 @@ nav {
 // Footer
 
 footer {
+	background: image-url('moustache-light.png') no-repeat right center;
+	@include respond-to(phone) { background: transparent;}
+	margin-right: 20px;
 	padding: 15px;
+	@include respond-to(phone) { text-align: center;}
+	p {
+		margin: 2px 0;
+
+	}
 }
 
 // Header
@@ -219,6 +242,8 @@ article {
 @include inlineIcon('bubble_clear', 13px, 12px);
 @include inlineIcon('download_arrow', 15px, 12px);
 @include inlineIcon('printer', 13px, 12px);
+@include inlineIcon('heart_dark', 13px, 12px);
+@include inlineIcon('document_new', 13px, 12px);
 
 
 

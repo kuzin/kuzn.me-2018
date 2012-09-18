@@ -26,14 +26,17 @@ Slim::Engine.set_default_options :pretty => true
 
 # Application routes
 get '/' do
+    @title = 'Portfolio'
     slim :index, :layout => :'layouts/application'
 end
 
 get '/cv' do
+  @title = 'CV'
   slim :resume, :layout => :'layouts/application'
 end
 
 get '/about' do
+  @title = 'About'
   slim :about, :layout => :'layouts/application'
 end
 
