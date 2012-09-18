@@ -1,12 +1,18 @@
 doctype html
 html
     head
-        title Kuzin.Resume
-        meta http-equiv="Content-Type" content="text/html;chartset=utf-8"
-        meta name="lang" content="en"
+        meta charset="utf-8"
+        meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+
+        title KUZ
+
+        meta content="width=device-width, initial-scale=1.0" name="viewport"
+
         link rel="stylesheet" media="screen" href="/stylesheets/application.css"
         link rel="stylesheet" media="print"  href="/stylesheets/print.css"
-        meta content="width=device-width, initial-scale=1.0" name="viewport"
+
+        script src="/javascripts/lib/modernizr-1.6.min.js"
+
     body
 
         nav
@@ -29,10 +35,8 @@ html
             == yield
 
         footer
-            p This is the footer!
+            p Running on <a href="http://www.sinatrarb.com/">Sinatra</a>. Deployed to <a href="http://heroku.com">Heroku</a>. Built with <a href="http://html5.org/">HTML5</a> and <a href="http://sass-lang.com/">SASS</a>/<a href="http://compass-style.org/">COMPASS</a>.
 
-
-        script src="/javascripts/lib/modernizr-1.6.min.js"
         script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
         script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"
         script src="/javascripts/lib/jquery.jribbble.js"
