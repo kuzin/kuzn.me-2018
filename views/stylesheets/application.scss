@@ -24,25 +24,49 @@ body {
 		@include link-colors(#4690E2, darken(#4690E2, 10), #4690E2);
 		text-decoration: none; } }
 
+strong { font-weight: 700; }
+h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
+h2 { font-size: 1em; margin: 0 0 1em 0; @include respond-to(phone) { span { display: none; } } }
+h3 {
+	margin: 2em 0 0 0;
+	text-transform: uppercase;
+	font-weight: 700; }
+ul {
+	list-style: circle;
+	margin: 1em 0 0 1em;
+	li {
+		margin-bottom: .5em;
+	}
+}
+p {
+	color: #444444;
+	margin: 10px 0; }
+
 footer {
 	padding: 15px;
 }
 
+header {
+	a#moustache {
+		background: inline-image('moustache.png');
+		width: 66px;
+		height: 20px;
+		display: block;
+		text-decoration: none;
+		margin: 0 auto;
+	}
+	text-align: center;
+	padding: 35px 15px 15px 15px;
+	border-bottom: 1px solid #ccc;
+	@include respond-to(phone) {
+		h1 {
+			font-size: 1.2em;
+		}
+	}
+}
+
 article {
 	section {
-		&#body {
-			a#moustache {
-				background: inline-image('moustache.png');
-				width: 66px;
-				height: 20px;
-				display: block;
-				text-decoration: none;
-				margin: 0 auto;
-			}
-			text-align: center;
-			padding: 35px 15px 15px 15px;
-			border-bottom: 1px solid #ccc;
-		}
 		&#portfolio {
 			padding: 15px;
 			background: inline-image('bg-bottom.png');
@@ -68,8 +92,44 @@ article {
 					width: 300px;
 					padding: 5px;
 					margin: 0;
+					position: relative;
 					@include respond-to(phone) { width: 100%; }
 					@include box-sizing(border-box);
+					&:hover {
+						.dribble-desc { opacity: 1; }
+					}
+					.dribble-desc {
+						@include single-transition(opacity, 0.2s, ease-in-out, 0);
+						opacity: 0; // 0 to enable transition, 1 for debug
+						position: absolute;
+						top: 14px;
+						left: 15px;
+						right: 15px;
+						bottom: 15px;
+						background: rgba(0, 0, 0, 0.8);
+						padding: 150px 15px 0 15px;
+						@include respond-to(phone) {
+							opacity: 1;
+							top: 190px;
+							padding: 15px 15px 0 15px; }
+						@include text-shadow(none);
+						strong {
+							font-size: 12px;
+							color: #eee;
+							font-weight: normal;
+						}
+						ul.dribble-stats {
+							li {
+								width: auto;
+								padding: 0 10px 0 15px;
+								margin: 0;
+								float: left;
+								&.likes { background: image-url('heart.png') left center no-repeat; }
+								&.views { background: image-url('eye.png') left center no-repeat; padding: 0 10px 0 18px !important;}
+								&.comments { background: image-url('bubble.png') left center no-repeat; }
+							}
+						}
+					}
 					img {
 						@include border-radius(3px);
 						width: 100%;
@@ -85,20 +145,21 @@ article {
 				@include respond-to(phone) { width: auto; max-width: 100%; }
 			}
 		}
-		strong { font-weight: 700; }
-		h1 { font-size: 1.5em; margin: 1em 0 .3em 0; }
-		h2 { font-size: 1em; margin: 0 0 1em 0; @include respond-to(phone) { span { display: none; } } }
-		h3 {
-			margin: 2em 0 0 0;
-			text-transform: uppercase;
-			font-weight: 700; }
-		ul {
-			list-style: circle;
-			margin: 1em 0 0 1em;
-			li {
-				margin-bottom: .5em;
-			}
-		}
-		p {
-			color: #444444;
-			margin: 10px 0; } } }
+	}
+}
+
+
+#load-more {
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+	background: #Fff;
+	button {
+		@include border-radius(5px);
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #CCC;
+		@include background(linear-gradient(#efefef, darken(#efefef, 10)));
+		@include box-sizing(border-box);
+		display: block;
+	}
+}

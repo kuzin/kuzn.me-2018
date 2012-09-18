@@ -8,14 +8,12 @@ html
         meta content="width=device-width, initial-scale=1.0" name="viewport"
     body
         header
-            nav
-                == partial :_nav_main
+            a id="moustache" href="/"
+            h1 the diabolical website of <strong>mike kuzin</strong>
+            h2 Interactive Designer & Front End Developer <span>@ <a href="http://www.showclix.com">ShowClix</a></span>
+
         article
-            section#body
-                a id="moustache" href="/"
-                == yield
-            section#portfolio
-                ul
+            == yield
 
         footer
             p This is the footer!
@@ -30,8 +28,16 @@ html
                 var html = [];
 
                  $.each(shots.shots, function (i, shot) {
-                    console.log(shot);
-                    html.push('<li><img src="' + shot.image_url + '" alt="' + shot.title + '"></li>');
+                    html.push('<li id="' + shot.id + '">');
+                    html.push('<a href="' + shot.short_url + '">');
+                    html.push('<img src="' + shot.image_url + '" alt="' + shot.title + '"/>');
+                    html.push('<div class="dribble-desc">');
+                    html.push('<strong>' + shot.title + '</strong>');
+                    html.push('<ul class="dribble-stats">');
+                    html.push('<li class="likes">' + shot.likes_count + '</li>');
+                    html.push('<li class="comments">' + shot.comments_count + '</li>');
+                    html.push('<li class="views">' + shot.views_count + '</li>');
+                    html.push('</div></ul></a></li>');
                 });
 
                 $('#portfolio ul').html(html.join(''));
