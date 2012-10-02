@@ -13,6 +13,14 @@
 	} @else if $media == huge {
 		@media only screen and (max-width: 960px) { @content }
 	}
+
+}
+
+@mixin inlineIcon ($name, $w:'12px', $h:'12px') {
+	.#{$name} {
+		background: image-url('#{$name}.png') no-repeat center center;
+		width: #{$w}; height: #{$h}; display: inline-block;
+	}
 }
 
 // Layout Defaults
@@ -138,8 +146,10 @@ header {
 
 article {
 	section {
+		&#about,
 		&#fourohfour,
 		&#cv {
+			@include clearfix;
 			padding: 30px;
 			margin: 0px auto;
 			width: 960px;
@@ -168,6 +178,33 @@ article {
 				@include border-radius(3px);
 				@include background(linear-gradient(#fefefe, #efefef));
 			}
+			#about-left {
+				width: 58%;
+				@include respond-to(phone) { width: 100%; }
+				float: left;
+			}
+			#about-right {
+				width: 40%;
+				@include respond-to(phone) { width: 100%; }
+				float: right;
+				ul {
+					margin: 0 0 0 -5px;
+					padding: 0;
+					li {
+						background: #f9f9f9;
+						float: left;
+						display: block;
+						margin: 3px;
+						padding: 5px 10px;
+						@include border-radius(50px);
+						@include single-transition(background, 0.5s, ease-in-out, 0);
+						&:hover {
+							background: #e9e9e9;
+						}
+					}
+				}
+			}
+			#about-left {}
 		}
 		&#portfolio {
 			padding: 30px;
@@ -254,14 +291,6 @@ article {
 
 
 // Icons
-
-@mixin inlineIcon ($name, $w:'12px', $h:'12px') {
-	.#{$name} {
-		background: image-url('#{$name}.png') no-repeat center center;
-		width: #{$w}; height: #{$h}; display: inline-block;
-	}
-}
-
 @include inlineIcon('home_dark', 13px, 12px);
 @include inlineIcon('info', 13px, 12px);
 @include inlineIcon('desktop_pc', 13px, 12px);
@@ -278,10 +307,3 @@ article {
 @include inlineIcon('twitter_dark', 13px, 12px);
 @include inlineIcon('dribbble', 13px, 12px);
 @include inlineIcon('loop', 13px, 12px);
-
-
-
-
-
-
-
