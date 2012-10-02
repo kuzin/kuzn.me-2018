@@ -168,7 +168,12 @@ article {
 				}
 			}
 			.resume-btn {
-				@include respond-to(phone) { display: none;}
+				@include respond-to(phone) {
+					width: 100%; @include box-sizing(border-box);
+					text-align: center; padding: 15px 0px;
+					margin-bottom: 20px;
+					&:nth-child(2) { display: none !important; }
+				}
 				float:right;
 				color: #333;
 				cursor: pointer !important;
