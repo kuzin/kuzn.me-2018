@@ -17,7 +17,6 @@ html
         script src="/javascripts/lib/modernizr-1.6.min.js"
 
     body
-
         nav
             ul
                 li class="portfolio"
@@ -45,41 +44,15 @@ html
         script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"
         script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"
         script src="/javascripts/lib/jquery.linkify.js"
+        script src="/javascripts/lib/jquery.jribbble.js"
+        script src="/javascripts/lib/jquery.infinite.js"
         script src="/javascripts/application.js"
 
         javascript:
-            $.getJSON("http://twitter.com/statuses/user_timeline/kuzin.json?callback=?", function(data) {
-                $(".tweet-box").html(data[0].text).tweetLinkify();
-            });
-            $.ajax({
-                type: 'get',
-                dataType: 'jsonp',
-                url: 'http://api.dribbble.com/players/Kuzin/shots?callback=Awesome',
-                success: function(data) {
-                    try {
-                        var shots = data.shots;
-                        for ( var i = 0; i < data.shots.length; i++ ) {
-                            if ( i < 12 ) {
-                            var html = [];
-                                 $.each(data.shots, function (i, shot) {
-                                    html.push('<li class="drib" id="' + shot.id + '">');
-                                    html.push('<a href="' + shot.short_url + '">');
-                                    html.push('<img src="' + shot.image_url + '" alt="' + shot.title + '"/>');
-                                    html.push('<div class="dribble-desc">');
-                                    html.push('<strong>' + shot.title + '</strong>');
-                                    html.push('<ul class="dribble-stats">');
-                                    html.push('<li class="likes">' + shot.likes_count + '</li>');
-                                    html.push('<li class="comments">' + shot.comments_count + '</li>');
-                                    html.push('<li class="views">' + shot.views_count + '</li>');
-                                    html.push('</div></ul></a></li>');
-                                });
-                                $('#portfolio ul').html(html.join(''));
-                            }
-                        }
-                    } catch (e) {
-                        alert(e);
-                    }
-                }
+
+            $(function(){
+                dribbble.init(1, 12);
+                twitter.init();
             });
 
         javascript:
