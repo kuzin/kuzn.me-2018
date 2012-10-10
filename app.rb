@@ -50,6 +50,11 @@ get '/about' do
   slim :about, :layout => :'layouts/application'
 end
 
+get '/contact' do
+  @title = 'Contact'
+  slim :contact, :layout => :'layouts/application'
+end
+
 not_found do
   slim :error, :layout => :'layouts/application'
 end

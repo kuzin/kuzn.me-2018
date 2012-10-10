@@ -74,6 +74,7 @@ nav {
 			display: inline;
 			@include respond-to(phone) {
 				padding: 0;
+				&.contact { a { width: 100% !important; } }
 				a {
 					width: 50%;
 					display: block;
@@ -89,6 +90,7 @@ nav {
 			&.portfolio { a { background: image-url('magic_wand.png') no-repeat left center;} }
 			&.cv 		{ a { background: image-url('page.png') no-repeat left center;} }
 			&.about 	{ a { background: image-url('hero_cosmic.png') no-repeat left center;} }
+			&.contact	{ a { background: image-url('bubble_clear.png') no-repeat left center;} }
 			a {
 				padding: 0 15px 0 20px;
 				color: #333;
@@ -146,6 +148,7 @@ header {
 
 article {
 	section {
+		&#contact,
 		&#about,
 		&#fourohfour,
 		&#cv {
@@ -326,6 +329,8 @@ article {
 @include inlineIcon('twitter_dark', 13px, 12px);
 @include inlineIcon('dribbble', 13px, 12px);
 @include inlineIcon('loop', 13px, 12px);
+@include inlineIcon('mail_dark', 13px, 12px);
+@include inlineIcon('phone', 13px, 12px);
 
 
 // Portrait
@@ -336,4 +341,5 @@ article {
 	margin-bottom: 15px;
 	background: image-url('portrait.jpg') no-repeat 0 0;
 	background-size: 100%;
+	@include respond-to(phone) { display: none; }
 }
